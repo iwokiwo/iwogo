@@ -30,6 +30,7 @@ func CopyFile(src, dst string) error {
 	if err != nil {
 		return err
 	}
+
 	return os.Chmod(dst, srcInfo.Mode())
 }
 
@@ -40,7 +41,7 @@ func CopyDir(src, dst string) error {
 
 	srcInfo, err := os.Stat(src)
 	if err != nil {
-		return err
+		return fmt.Errorf("source folder does not exist: %v", err)
 	}
 
 	if !srcInfo.IsDir() {
@@ -75,19 +76,20 @@ func CopyDir(src, dst string) error {
 }
 
 func main() {
-	// Check if a command-line argument is provided
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run resource/install/main.go <destination_folder>")
+		fmt.Println("Usage: go run install/main.go <destination_folder>")
 		return
 	}
 
-	// Get the destination folder name from command-line argument
+	src, _ := filepath.Abs("install/package")
+
+	if _, err := os.Stat(src); os.IsNotExist(err) {
+		fmt.Println("Error: Source folder does not exist:", src)
+		return
+	}
+
 	dst := os.Args[1]
 
-	// Define the source folder
-	src := "install/package" // Example source folder
-
-	// Perform the copy
 	err := CopyDir(src, dst)
 	if err != nil {
 		fmt.Println("Error copying folder:", err)

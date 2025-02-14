@@ -2,7 +2,7 @@
 
 
 ```bash
-go run resource/install/main.go 
+go run iwogo/install/main.go tes
 ```
 
 ```bash
