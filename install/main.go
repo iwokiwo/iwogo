@@ -81,15 +81,19 @@ func main() {
 		return
 	}
 
-	src, _ := filepath.Abs("install/package")
+	// Correct the source folder path
+	src := "iwogo/install/package" // Change this based on your project structure
 
+	// Verify source exists
 	if _, err := os.Stat(src); os.IsNotExist(err) {
 		fmt.Println("Error: Source folder does not exist:", src)
 		return
 	}
 
+	// Get the destination folder from the command-line argument
 	dst := os.Args[1]
 
+	// Perform the copy
 	err := CopyDir(src, dst)
 	if err != nil {
 		fmt.Println("Error copying folder:", err)
