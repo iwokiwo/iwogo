@@ -1,0 +1,16 @@
+package helper
+
+type Pagination struct {
+	Size         int         `json:"size"`
+	Page         int         `json:"page"`
+	Sort         string      `json:"sort"`
+	TotalRows    int64       `json:"total_rows"`
+	FirstPage    string      `json:"first_page"`
+	PreviousPage string      `json:"previous_page"`
+	NextPage     string      `json:"next_page"`
+	LastPage     string      `json:"last_page"`
+	FromRow      int         `json:"from_row"`
+	ToRow        int         `json:"to_row"`
+	Rows         interface{} `json:"rows"`
+	Searchs      []Search    `json:"searchs"`
+}

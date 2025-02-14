@@ -1,0 +1,1035 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "EXHotel",
+    "description": "API for EXHotel",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/categories": {
+      "get": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": [
+          "Category API"
+        ],
+        "description": "List all Categories",
+        "summary": "List all Categories",
+        "responses": {
+          "200": {
+            "description": "Success get all categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Category"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Category API"],
+        "description": "Create new Category",
+        "summary": "Create new Category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create Category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}" : {
+      "get" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Category API"],
+        "summary": "Get category by Id",
+        "description": "Get category by id",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "Category Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Category API"],
+        "summary": "Update category by Id",
+        "description": "Update category by Id",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "Category Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Category API"],
+        "summary": "Delete category by Id",
+        "description": "Delete category by id",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "Category Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": [
+          "Product API"
+        ],
+        "description": "List all Products",
+        "summary": "List all Products",
+        "responses": {
+          "200": {
+            "description": "Success get all Products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Products"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Product API"],
+        "description": "Create new Product",
+        "summary": "Create new Product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref":  "#/components/schemas/CreateOrUpdateProduct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref":  "#/components/schemas/Products"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{ProductId}" : {
+      "get" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Product API"],
+        "summary": "Get product by Id",
+        "description": "Get product by id",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "Product Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Products"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Product API"],
+        "summary": "Update product by Id",
+        "description": "Update product by Id",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "Product Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref":  "#/components/schemas/CreateOrUpdateProduct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref":  "#/components/schemas/Products"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Product API"],
+        "summary": "Delete product by Id",
+        "description": "Delete product by id",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "Product Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": [
+          "Users API"
+        ],
+        "description": "List all users",
+        "summary": "List all users",
+        "responses": {
+          "200": {
+            "description": "Success get all users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref":  "#/components/schemas/Users"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Users API"],
+        "description": "Create new User",
+        "summary": "Create new User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{UserId}" : {
+      "get" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Users API"],
+        "summary": "Get user by Id",
+        "description": "Get user by id",
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "User Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Users API"],
+        "summary": "Update user by Id",
+        "description": "Update user by Id",
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "User Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref":  "#/components/schemas/CreateOrUpdateUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref":  "#/components/schemas/Products"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Users API"],
+        "summary": "Delete user by Id",
+        "description": "Delete user by id",
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "User Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/discounts": {
+      "get": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": [
+          "Discount API"
+        ],
+        "description": "List all Discount",
+        "summary": "List all Discount",
+        "responses": {
+          "200": {
+            "description": "Success get all Discount",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Discount"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Discount API"],
+        "description": "Create new Discount",
+        "summary": "Create new Discount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref":  "#/components/schemas/CreateOrUpdateDiscount"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create Discount",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref":  "#/components/schemas/Discount"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/discounts/{DiscountId}" : {
+      "get" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Discount API"],
+        "summary": "Get Discount by Id",
+        "description": "Get Discount by id",
+        "parameters": [
+          {
+            "name": "DiscountId",
+            "in": "path",
+            "description": "Discount Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get Discount",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Discount"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Discount API"],
+        "summary": "Update Discount by Id",
+        "description": "Update Discount by Id",
+        "parameters": [
+          {
+            "name": "DiscountId",
+            "in": "path",
+            "description": "Discount Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateDiscount"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get Discount",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Discount"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "UserAuth" : []
+        }],
+        "tags": ["Discount API"],
+        "summary": "Delete Discount by Id",
+        "description": "Delete Discount by id",
+        "parameters": [
+          {
+            "name": "DiscountId",
+            "in": "path",
+            "description": "Discount Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete Discount",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "UserAuth" : {
+        "type": "apiKey",
+        "in" : "header",
+        "name": "X-API-Key",
+        "description": "Authentication for user API"
+      }
+    },
+    "schemas": {
+      "CreateOrUpdateCategory" : {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Category" : {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Products" : {
+        "type": "object",
+        "properties": {
+          "id" : {
+            "type": "integer"
+          },
+          "name" : {
+            "type": "string"
+          },
+          "category_id":{
+            "type": "integer"
+          },
+          "slider_id" : {
+            "type": "integer"
+          },
+          "discount_id" : {
+            "type": "integer"
+          },
+          "bahan": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "stock": {
+            "type": "number"
+          },
+          "active": {
+            "type": "number"
+          },
+          "description" :{
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateOrUpdateProduct" : {
+        "type": "object",
+        "properties": {
+          "name" : {
+            "type": "string"
+          },
+          "category_id":{
+            "type": "integer"
+          },
+          "slider_id" : {
+            "type": "integer"
+          },
+          "discount_id" : {
+            "type": "integer"
+          },
+          "bahan": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "stock": {
+            "type": "number"
+          },
+          "description" :{
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Users" : {
+        "type": "object",
+        "properties": {
+          "id" : {
+            "type": "integer"
+          },
+          "name" : {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "password_temp": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "active": {
+            "type": "number"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateOrUpdateUser" : {
+        "type": "object",
+        "properties": {
+          "name" : {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "password_temp": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "active": {
+            "type": "number"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Discount" : {
+        "type": "object",
+        "properties": {
+          "id" : {
+            "type": "integer"
+          },
+          "name" : {
+            "type": "string"
+          },
+          "persentase": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "start_date": {
+            "type": "integer"
+          },
+          "end_date": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateOrUpdateDiscount" : {
+        "type": "object",
+        "properties": {
+          "name" : {
+            "type": "string"
+          },
+          "persentase": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "start_date": {
+            "type": "integer"
+          },
+          "end_date": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

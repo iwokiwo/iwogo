@@ -1,0 +1,11 @@
+/storage/branches
+/storage/store
+/storage/item
+/storage/gallery
+/.idea/dataSources
+
+*.exe
+.env
+*.xml
+*.patch
+*.idea
