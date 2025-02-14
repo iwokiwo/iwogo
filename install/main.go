@@ -85,7 +85,7 @@ func main() {
 	dst := os.Args[1]
 
 	// Define the source folder
-	src := "resource/install/package" // Example source folder
+	src := "install/package" // Example source folder
 
 	// Perform the copy
 	err := CopyDir(src, dst)
