@@ -1,5 +1,10 @@
 ## Installation Project IWO KWIO
 
+```bash
+go  go install github.com/iwokiwo/iwogo/install@latest
+```
+
+
 
 ```bash
 go run iwogo/install/main.go tes
