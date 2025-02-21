@@ -56,3 +56,9 @@ configuration file to the current directory with the default settings running th
 ```shell
 air init
 ```
+
+running Project
+
+```shell
+air
+```
